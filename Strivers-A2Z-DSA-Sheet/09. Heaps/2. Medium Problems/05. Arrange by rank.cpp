@@ -19,6 +19,18 @@ The time complexity of the arrayRankTransform function is O(N log N), where N is
 
 SPACE COMPLEXITY:
 The space complexity is O(N) as we need to store N elements in the min-heap and the result array.
+
+🔹 Dry Run
+arr = [40, 10, 20, 20, 30]
+Push → heap = {10,1}, {20,2}, {20,3}, {30,4}, {40,0}
+Pop {10,1} → new value ≠ prev → rank=1 → ans[1]=1
+Pop {20,2} → new value ≠ 10 → rank=2 → ans[2]=2
+Pop {20,3} → same as prev (20) → rank stays 2 → ans[3]=2
+Pop {30,4} → new value ≠ 20 → rank=3 → ans[4]=3
+Pop {40,0} → new value ≠ 30 → rank=4 → ans[0]=4
+Final result: ans = [4,1,2,2,3]
+
+
 */
 
 vector<int> arrayRankTransform(vector<int>& arr) {
