@@ -5,6 +5,7 @@ You are given an array of k linked-lists lists, each linked-list is sorted in as
 APPROACH:
 To merge K sorted linked lists, we can use a min-heap (priority queue) to store the smallest nodes from each list.
 1. Create a min-heap of size K to store the current smallest nodes from each list.
+(min-heap of {value, node} pairs)
 2. Initialize the min-heap with the head node from each list.
 3. While the min-heap is not empty, extract the smallest node from the min-heap, add it to the merged linked list, and replace it with the next node from the same list.
 4. Repeat step 3 until all nodes from all lists are processed.
