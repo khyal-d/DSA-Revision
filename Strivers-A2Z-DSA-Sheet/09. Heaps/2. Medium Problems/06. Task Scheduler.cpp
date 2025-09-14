@@ -28,6 +28,7 @@ int leastInterval(vector<char>& tasks, int n) {
     int maxfreq = INT_MIN;
     for (auto it : mp)
         maxfreq = max(maxfreq, it.second);
+    // A _ _ A _ _ A _ _ A _ _ A _ _ A
     int ans = (maxfreq - 1) * (n + 1);
     // number of elements having maxfreq
     for (auto it : mp) {
@@ -36,3 +37,34 @@ int leastInterval(vector<char>& tasks, int n) {
     }
     return max(ans, siz);
 }
+
+/*
+Why not just return ans instead of max(ans, siz);
+
+🔹 Example where ans < siz
+Say:
+tasks = [A, A, A, B, C, D, E, F, G, H, I], n = 2
+Count: A=3, others = 1.
+maxfreq = 3.
+(maxfreq - 1) * (n+1) = (3-1)*3 = 6.
+Only one task has maxfreq, so ans = 6 + 1 = 7.
+
+But siz = 11 (we must execute all 11 tasks).
+👉 If we just return ans = 7, it’s wrong. The CPU must spend at least 11 units, one per task.
+So we take max(ans, siz) = max(7, 11) = 11.
+
+🔹 Example where ans >= siz
+tasks = [A, A, A, B, B, B], n = 2
+A=3, B=3, maxfreq=3.
+(maxfreq - 1) * (n+1) = 6.
+count(maxfreqTasks)=2.
+ans=8.
+siz=6.
+Here ans > siz (because we need idle slots). So the correct answer is 8.
+
+🔹 Conclusion
+ans = theoretical minimum schedule length based on the bottleneck (maxfreq tasks).
+siz = total tasks (we can’t do fewer than this).
+So the true minimum time = max(ans, siz).
+
+*/
