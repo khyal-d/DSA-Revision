@@ -50,3 +50,27 @@ bool isPossibleDivide(vector<int>& nums, int k) {
     return true;
 }
 
+
+
+// Here we used map instead of unordered_map
+bool isPossibleDivide(vector<int>& nums, int k) {
+    if (nums.size() % k != 0) return false;
+
+    map<int, int> mp;
+    for (int num : nums) {
+        mp[num]++;   // frequency count, automatically ordered
+    }
+
+    for (auto& [num, freq] : mp) {
+        while (mp[num] > 0) {
+            // Try to build a group starting at num
+            for (int i = 0; i < k; i++) {
+                if (mp[num + i] == 0) return false;
+                mp[num + i]--;
+            }
+        }
+    }
+    return true;
+}
+
+
