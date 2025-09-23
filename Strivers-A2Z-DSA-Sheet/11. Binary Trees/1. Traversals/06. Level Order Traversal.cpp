@@ -5,6 +5,7 @@ Given the root of a binary tree, return the level order traversal of its nodes' 
 Approach:
 - We can perform a level order traversal using a queue.
 - We start by pushing the root node into the queue.
+- iss ke baad, ek vector of vector lena hai, and uss me jo bhi abhi pehle se hai queue me, uss ko pop krna hai, and unn ka let/right queue me dalna hai.
 - Then, while the queue is not empty, we process each level by taking the size of the queue and iterating over the nodes at that level.
 - For each node, we add its value to the current level's vector and push its left and right child nodes into the queue if they exist.
 - After processing each level, we add the level's vector to the result vector.
