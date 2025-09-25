@@ -18,6 +18,22 @@ Complexity Analysis:
 - Since we visit each node once and perform constant time operations for each node, the time complexity of this approach is O(N), where N is the number of nodes in the binary tree.
 - The space complexity is O(H), where H is the height of the binary tree. In the worst case, the height of the binary tree can be N, resulting in O(N) space complexity.
 
+
+
+    vector<int> boundaryTraversal(Node *root) {
+        // code here
+        vector<int> res;
+        if(!root) return res;
+        if(!isLeaf(root)) res.push_back(root->data);
+        addLeftBoundary(root->left, res);
+        addLeaves(root, res);
+        addRightBoundary(root->right, res);
+        return res;
+    }
+
+
+
+    
 Code:
 */
 
