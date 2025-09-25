@@ -19,7 +19,24 @@ Complexity Analysis:
 - The space complexity is O(H), where H is the height of the binary tree. In the worst case, the height of the binary tree can be N, resulting in O(N) space complexity.
 
 
+WE HAVE TO DO EACH STEP IN DIFFERENT FUNCTION
+LIKE THISSSSS:
+class Solution {
+  private:
+    bool isLeaf(Node* root){
+        
+    }
+    void addLeftBoundary(Node* node, vector<int>& res){
 
+    }
+    void addLeaves(Node* node, vector<int>& res){
+
+    }
+    void addRightBoundary(Node* node, vector<int>& res){
+
+    }
+
+  public:
     vector<int> boundaryTraversal(Node *root) {
         // code here
         vector<int> res;
@@ -30,6 +47,8 @@ Complexity Analysis:
         addRightBoundary(root->right, res);
         return res;
     }
+};
+
 
 
 
