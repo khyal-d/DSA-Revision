@@ -70,6 +70,8 @@ Space Complexity:
 */
     // Function to return Breadth First Traversal of given graph.
     vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+
+// if V is not given then use int V = adj.size();        
         int vis[V] = {0};      // visited array initialized to 0
         vis[0] = 1;            // mark starting node as visited
         queue<int> q;          // BFS queue
