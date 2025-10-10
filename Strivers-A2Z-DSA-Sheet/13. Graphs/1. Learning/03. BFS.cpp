@@ -45,30 +45,50 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
 
 // Striver solution 
 
+/*
+Question:
+Given a directed graph, perform Breadth First Traversal (BFS) of the graph starting from vertex 0 and visit all the nodes directly or indirectly connected to Node 0.
 
+Explanation:
+- We maintain an adjacency list to represent the graph.
+- We use an integer array 'vis' of size V, initialized with 0, to mark visited nodes.
+- We use a queue 'q' to perform BFS. BFS works in a FIFO manner.
+- Start by marking node 0 as visited and pushing it into the queue.
+- While the queue is not empty:
+    - Pop the front node and add it to the answer.
+    - Traverse all adjacent nodes of this node. If any neighbor has not been visited:
+        - Mark it visited.
+        - Push it into the queue.
+- Continue until the queue is empty. This ensures all nodes reachable from node 0 are visited.
+- Finally, return the BFS traversal order.
+
+Time Complexity:
+- O(V + E), where V is the number of vertices and E is the number of edges, since each vertex and edge is processed once.
+
+Space Complexity:
+- O(V), for the visited array and queue.
+*/
     // Function to return Breadth First Traversal of given graph.
     vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-        int vis[V] = {0}; 
-        vis[0] = 1; 
-        queue<int> q;
-        // push the initial starting node 
-        q.push(0); 
-        vector<int> bfs; 
-        // iterate till the queue is empty 
-        while(!q.empty()) {
-           // get the topmost element in the queue 
-            int node = q.front(); 
-            q.pop(); 
-            bfs.push_back(node); 
-            // traverse for all its neighbours 
-            for(auto it : adj[node]) {
-                // if the neighbour has previously not been visited, 
-                // store in Q and mark as visited 
-                if(!vis[it]) {
-                    vis[it] = 1; 
-                    q.push(it); 
+        int vis[V] = {0};      // visited array initialized to 0
+        vis[0] = 1;            // mark starting node as visited
+        queue<int> q;          // BFS queue
+        q.push(0);             // push starting node
+        vector<int> bfs;       // result vector
+
+        // iterate until queue is empty
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+            bfs.push_back(node);
+
+            // traverse all adjacent nodes
+            for (auto it : adj[node]) {
+                if (!vis[it]) {    // if not visited
+                    vis[it] = 1;
+                    q.push(it);
                 }
             }
         }
-        return bfs; 
+        return bfs;
     }
