@@ -1,4 +1,18 @@
-/*Your task is to implement the function atoi. The function takes a string (str) as an argument and converts it to an integer and returns it.
+/*
+💥 What is Stack Overflow?
+A Stack Overflow happens when the call stack grows beyond its limit, usually due to:
+Infinite recursion (no base case)
+Very deep recursion (too many nested calls)
+Large local variables in recursion
+
+
+
+
+
+
+
+
+Your task is to implement the function atoi. The function takes a string (str) as an argument and converts it to an integer and returns it.
 
 Note: You are not allowed to use inbuilt functions.
 
