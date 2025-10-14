@@ -1,3 +1,60 @@
+class Solution {
+  private:
+
+
+  void dfs(int node, vector<int> adj[], int vis[], vector<int> &ans){
+    vis[node] = 1;
+    ans.push_back(node);
+    for(auto it : adj[node]){
+      if(!vis[it]){
+        dfs(it, adj, vis, ans);
+      }
+    }
+  }
+  
+  void bfs(int node, vector<int> adj[], int vis[], vector<int> &ans){
+    queue<int> q;
+    q.push(node);
+    while(!q.empty()){
+      int node = q.front();
+      q.pop();
+      ans.push_back(node);
+      for(auto it : adj[node]){
+        if(!vis[it]){
+          vis[it] = 1;
+          q.push(it);
+        }
+      }
+    }
+    return;
+  }
+  
+  public:
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+     int vis[V] = {0};
+     vector<int> ans;
+     for(int i=0; i < V; i++){
+      if(vis[i] == 0)
+        dfs(i, adj, vis, ans);
+     }
+     return ans;
+    }
+    
+    vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        int vis[V] = {0};
+        vector<int> ans;
+        for(int i=0; i<V; i++){
+          if(vis[i] == 0){
+            vis[i] = 1;
+            bfs(i, adj, vis, ans);
+          }
+        }
+        return ans;
+    }
+};
+
+
+
 /*
 Question:
 Given a directed graph, perform Breadth First Traversal (BFS) of the graph starting from vertex 0 and visit all the nodes directly or indirectly connected to Node 0.
